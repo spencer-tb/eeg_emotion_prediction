@@ -8,28 +8,28 @@ Original file is located at
 """
 
 # This program aims to accurately predict the emotional states of a subject while watching various movie scenes given their EEG readings using a recurrent neural network
+
+## Imports
 import numpy as np
 import pandas as pd
-
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-from sklearn.model_selection import train_test_split
-
 import tensorflow as tf
-
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
 
+### Print out Data
 data = pd.read_csv('emotions.csv')
-
 data
 
-sample = data.loc[0, 'fft_0_b':'fft_749_b']
+###
+fft_sample = data.loc[0, 'fft_0_b':'fft_749_b']
 plt.figure(figsize=(16, 10))
 plt.plot(range(len(sample)), sample)
 plt.title('Feautures fft_0_b through fft_749_b')
 plt.show()
 
+###
 data['label'].value_counts()
 
 label_mapping = {'NEGATIVE': 0, 'NEUTRAL': 1, 'POSITIVE': 2}
